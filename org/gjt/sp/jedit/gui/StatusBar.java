@@ -317,7 +317,8 @@ public class StatusBar extends JPanel
 	
 	
 	//{{{ getWordCount() Splits the words in the file using java regex
-	// Implemented by Ivan Huerta-Bernal
+	// Driver for Change Request #1:: Ivan Huerta-Bernal
+	// Navigator for Change Request #1:: Michael Petrey
 	private int getTotalWordCount(String fileWords) {
 		
 		if (fileWords == null || fileWords.isEmpty()) {
