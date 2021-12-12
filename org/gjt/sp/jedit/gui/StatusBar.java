@@ -315,29 +315,24 @@ public class StatusBar extends JPanel
 		panel.add(BorderLayout.CENTER, messageComp);
 	} //}}}
 	
-	
-	///{{{ getWordCount()
-			// Ivan Huerta-Bernal
-		
-			private int getTotalWordCount(String wordss) {
+	///{{{ getWordCount() Splits the words in the file using java regex
+			// Implemented by Ivan Huerta-Bernal
+			private int getTotalWordCount(String fileWords) {
 				
-				if (wordss == null || wordss.isEmpty()) {
+				if (fileWords == null || fileWords.isEmpty()) {
 				      return 0;
 				    }
-
-				    String[] words = wordss.split("\\s+");
+				    String[] words = fileWords.split("\\s+");
 				    return words.length;  
 			}
 			//}}}
 			
 			//{{{ getWordCountAtCaret()
-			
-			private int getWordCountAtCaret(String wordss) {
-				if (wordss == null || wordss.isEmpty()) {
+			private int getWordCountAtCaret(String fileWords) {
+				if (fileWords == null || fileWords.isEmpty()) {
 				      return 0;
 				    }
-
-				    String[] words = wordss.split("\\s+");
+				    String[] words = fileWords.split("\\s+");
 				    return words.length;
 			}
 			//}}}
@@ -378,17 +373,20 @@ public class StatusBar extends JPanel
 			if(dot < 0)
 				return;
 			
+			int bufferLength = buffer.getLength();
 			
-			// passing a string to get wordcounts
+			// passing a String to geWordcount methods
 			int totalWords = getTotalWordCount(buffer.getText());
 			int caretWords = getWordCountAtCaret(buffer.getText(0, caretPosition));
 			
+			buffer.getText(start,dot,seg);// what does this do?
+			// So what this does is it gets the text for the entire 
+			// text area. IF you remove it the only part of the text
+			// that gets accounted for is everything on the first line.
+			// any newlines WILL not be counted. SO keep it.
 			
 			
-
-			int bufferLength = buffer.getLength();
-
-			buffer.getText(start,dot,seg);
+			
 			
 			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
 				buffer.getTabSize());
