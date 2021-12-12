@@ -314,32 +314,7 @@ public class StatusBar extends JPanel
 		messageComp = comp;
 		panel.add(BorderLayout.CENTER, messageComp);
 	} //}}}
-<<<<<<< HEAD
-	
-	///{{{ getWordCount() Splits the words in the file using java regex
-			// Implemented by Ivan Huerta-Bernal
-			private int getTotalWordCount(String fileWords) {
-				
-				if (fileWords == null || fileWords.isEmpty()) {
-				      return 0;
-				    }
-				    String[] words = fileWords.split("\\s+");
-				    return words.length;  
-			}
-			//}}}
-			
-			//{{{ getWordCountAtCaret()
-			private int getWordCountAtCaret(String fileWords) {
-				if (fileWords == null || fileWords.isEmpty()) {
-				      return 0;
-				    }
-				    String[] words = fileWords.split("\\s+");
-				    return words.length;
-			}
-			//}}}
 
-=======
->>>>>>> parent of ca18f70 (Initial push from desktop repo)
 
 	//{{{ updateCaretStatus() method
 	/** Updates the status bar with information about the caret position, line number, etc */
@@ -375,29 +350,11 @@ public class StatusBar extends JPanel
 
 			if(dot < 0)
 				return;
-<<<<<<< HEAD
 			
-			int bufferLength = buffer.getLength();
-			
-			// passing a String to geWordcount methods
-			int totalWords = getTotalWordCount(buffer.getText());
-			int caretWords = getWordCountAtCaret(buffer.getText(0, caretPosition));
-			
-			buffer.getText(start,dot,seg);// what does this do?
-			// So what this does is it gets the text for the entire 
-			// text area. IF you remove it the only part of the text
-			// that gets accounted for is everything on the first line.
-			// any newlines WILL not be counted. SO keep it.
-			
-			
-			
-			
-=======
-
 			int bufferLength = buffer.getLength();
 
 			buffer.getText(start,dot,seg);
->>>>>>> parent of ca18f70 (Initial push from desktop repo)
+
 			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
 				buffer.getTabSize());
 			// for GC
