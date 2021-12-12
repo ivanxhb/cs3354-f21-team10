@@ -1,8 +1,0 @@
-[action]
-backspace
-insert-newline-indent
-next-char
-prev-char
-delete
-next-line
-prev-line
