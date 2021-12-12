@@ -1,7 +1,0 @@
-[action]
-next-char
-prev-char
-next-line
-prev-line
-backspace
-insert-newline-indent
