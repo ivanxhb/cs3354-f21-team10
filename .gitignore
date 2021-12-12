@@ -1,6 +1,6 @@
 # Default ignored files
-build/
-lib/
-.idea/
+/build
+/lib
+/.idea
 
 *.xml
