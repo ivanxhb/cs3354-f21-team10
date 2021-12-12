@@ -314,6 +314,7 @@ public class StatusBar extends JPanel
 		messageComp = comp;
 		panel.add(BorderLayout.CENTER, messageComp);
 	} //}}}
+<<<<<<< HEAD
 	
 	///{{{ getWordCount() Splits the words in the file using java regex
 			// Implemented by Ivan Huerta-Bernal
@@ -337,6 +338,8 @@ public class StatusBar extends JPanel
 			}
 			//}}}
 
+=======
+>>>>>>> parent of ca18f70 (Initial push from desktop repo)
 
 	//{{{ updateCaretStatus() method
 	/** Updates the status bar with information about the caret position, line number, etc */
@@ -372,6 +375,7 @@ public class StatusBar extends JPanel
 
 			if(dot < 0)
 				return;
+<<<<<<< HEAD
 			
 			int bufferLength = buffer.getLength();
 			
@@ -388,6 +392,12 @@ public class StatusBar extends JPanel
 			
 			
 			
+=======
+
+			int bufferLength = buffer.getLength();
+
+			buffer.getText(start,dot,seg);
+>>>>>>> parent of ca18f70 (Initial push from desktop repo)
 			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
 				buffer.getTabSize());
 			// for GC
@@ -420,11 +430,6 @@ public class StatusBar extends JPanel
 				buf.append(caretPosition);
 				buf.append('/');
 				buf.append(bufferLength);
-				buf.append(')');
-				buf.append('(');
-				buf.append(caretWords);
-				buf.append('/');
-				buf.append(totalWords);
 				buf.append(')');
 			}
 			else if (jEdit.getBooleanProperty("view.status.show-caret-offset", true))
