@@ -128,6 +128,7 @@ recent-files.label=Recent $Files
 recent-files.textfield.tooltip=a filter prefix or glob-pattern can be entered here
 no-recent-files.label=No Recent Files
 clear-recent-files.label=Clear Recent Files
+clear-recent-directories.label=Clear Recent Directories
 #}}}
 
 reload-encoding.label=Reload with $Encoding
