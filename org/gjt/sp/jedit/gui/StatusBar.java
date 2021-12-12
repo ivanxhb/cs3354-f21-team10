@@ -314,6 +314,30 @@ public class StatusBar extends JPanel
 		messageComp = comp;
 		panel.add(BorderLayout.CENTER, messageComp);
 	} //}}}
+	
+	
+	//{{{ getWordCount() Splits the words in the file using java regex
+	// Implemented by Ivan Huerta-Bernal
+	private int getTotalWordCount(String fileWords) {
+		
+		if (fileWords == null || fileWords.isEmpty()) {
+		      return 0;
+		    }
+		    String[] words = fileWords.split("\\s+");
+		    return words.length;  
+	}
+	//}}}
+	
+	//{{{ getWordCountAtCaret()
+	private int getWordCountAtCaret(String fileWords) {
+		if (fileWords == null || fileWords.isEmpty()) {
+		      return 0;
+		    }
+		    String[] words = fileWords.split("\\s+");
+		    return words.length;
+	}
+	//}}}
+
 
 
 	//{{{ updateCaretStatus() method
@@ -342,6 +366,7 @@ public class StatusBar extends JPanel
 			// be called as a result of a text area scroll
 			// event, in which case the caret position has
 			// not been updated yet.
+			
 			if(currLine >= buffer.getLineCount())
 				return; // hopefully another caret update will come?
 
@@ -352,8 +377,17 @@ public class StatusBar extends JPanel
 				return;
 			
 			int bufferLength = buffer.getLength();
+			
+			// passing a String to getWordcount methods
+			int totalWords = getTotalWordCount(buffer.getText());
+			int caretWords = getWordCountAtCaret(buffer.getText(0, caretPosition));
+			
+			buffer.getText(start,dot,seg);// what does this do?
+			// So what this does is it gets the text for the entire 
+			// text area. IF you remove it the only part of the text
+			// that gets accounted for is everything on the first line.
+			// any newlines WILL not be counted. SO keep it.
 
-			buffer.getText(start,dot,seg);
 
 			int virtualPosition = StandardUtilities.getVirtualWidth(seg,
 				buffer.getTabSize());
@@ -387,6 +421,11 @@ public class StatusBar extends JPanel
 				buf.append(caretPosition);
 				buf.append('/');
 				buf.append(bufferLength);
+				buf.append(')');
+				buf.append('(');
+				buf.append(caretWords);
+				buf.append('/');
+				buf.append(totalWords);
 				buf.append(')');
 			}
 			else if (jEdit.getBooleanProperty("view.status.show-caret-offset", true))
