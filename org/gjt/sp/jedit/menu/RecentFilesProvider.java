@@ -97,12 +97,22 @@ public class RecentFilesProvider implements DynamicMenuProvider
 				Pattern pattern = null;
 				if (filter)
 				{
+					/*
 					String regex = typedText;
 					if ((! typedText.contains("*")) && (! typedText.contains("?")))
 					{
 						// Old style (before jEdit 4.3pre18): Match start of file name
 						regex += "*";
 					}
+					
+				*/
+					
+				// Simply create a new string with WILDCARDs on the beginning and end
+				// with the typedtext in the middle.
+				String regex = "*";
+				regex += typedText;
+				regex += "*";
+				
 					pattern = Pattern.compile(StandardUtilities.globToRE(regex),
 						Pattern.CASE_INSENSITIVE);
 				}
